@@ -627,6 +627,20 @@
             display: flex;
             flex-direction: column;
             z-index: 1000;
+            transition: height 0.3s ease;
+        }
+
+        .chat-panel.minimized {
+            height: 56px;
+        }
+
+        .chat-panel.minimized .chat-messages,
+        .chat-panel.minimized .chat-input {
+            display: none;
+        }
+
+        .chat-panel.minimized .chat-toggle-icon {
+            transform: rotate(180deg);
         }
 
         .chat-header {
@@ -721,6 +735,10 @@
             height: 16px;
             color: var(--text-disabled);
             cursor: pointer;
+        }
+
+        .chat-toggle-icon {
+            transition: transform 0.3s ease;
         }
 
         /* Utility Classes */
@@ -1478,7 +1496,7 @@
                 </svg>
                 <span class="chat-title-text">Discovery Assistant</span>
             </div>
-            <svg style="width: 16px; height: 16px; color: var(--text-disabled); cursor: pointer;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="chat-toggle-icon" style="width: 16px; height: 16px; color: var(--text-disabled); cursor: pointer;" fill="none" stroke="currentColor" viewBox="0 0 24 24" onclick="toggleChatPanel()">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
         </div>
@@ -1526,6 +1544,12 @@
                     alert(`File selected: ${fileName}\n\nIn a real application, this would upload and process the file.`);
                 }
             });
+        }
+
+        // Chat panel toggle
+        function toggleChatPanel() {
+            const chatPanel = document.querySelector('.chat-panel');
+            chatPanel.classList.toggle('minimized');
         }
 
         // Chat panel functionality
