@@ -589,16 +589,28 @@
             color: white;
         }
 
+        .button-primary:hover {
+            background-color: #FF7020;
+        }
+
         .button-secondary {
             background-color: transparent;
             border: 1px solid var(--border-default);
             color: var(--text-primary);
         }
 
+        .button-secondary:hover {
+            background-color: var(--bg-elevated);
+        }
+
         .action-buttons {
             display: flex;
             justify-content: flex-end;
             gap: 12px;
+            position: fixed;
+            bottom: 32px;
+            right: 380px;
+            z-index: 100;
         }
 
         /* Chat Panel */
